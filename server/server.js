@@ -19,16 +19,13 @@ const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-producti
 app.use((req, res, next) => {
   const origin = req.headers.origin;
   // Allow all localhost origins in development
-  if (origin && (origin.includes('localhost') || origin.includes('127.0.0.1'))) {
-    res.header('Access-Control-Allow-Origin', origin);
-    res.header('Access-Control-Allow-Credentials', 'true');
-  } else if (origin) {
-    // For other origins, allow but without credentials
-    res.header('Access-Control-Allow-Origin', origin);
-  } else {
-    // No origin header (like direct API calls)
-    res.header('Access-Control-Allow-Origin', '*');
-  }
+ if (origin) {
+  res.header('Access-Control-Allow-Origin', origin);
+  res.header('Access-Control-Allow-Credentials', 'true');
+} else {
+  res.header('Access-Control-Allow-Origin', '*');
+}
+
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS, PATCH');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
   
@@ -1142,8 +1139,7 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Server is running' });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`✅ Server running on port ${PORT} and accessible on Azure`);
 });
-
 
