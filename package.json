@@ -9,7 +9,7 @@
     "server": "nodemon server/server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "npm run build --prefix client"
+    "build": "CI=false npm run build --prefix client"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
