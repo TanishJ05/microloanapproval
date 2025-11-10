@@ -5,11 +5,13 @@
   "main": "server/server.js",
   "private": true,
   "scripts": {
-    "start": "node server/server.js",
-    "server": "nodemon server/server.js",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "CI=false npm run build --prefix client"
+
+  "start": "node server/server.js",
+  "server": "nodemon server/server.js",
+  "client": "npm start --prefix client",
+  "dev": "concurrently \"npm run server\" \"npm run client\"",
+  "build": "npm run build --prefix client",
+  "postinstall": "npm install --prefix client && npm run build --prefix client"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
