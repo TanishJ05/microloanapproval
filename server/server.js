@@ -1133,13 +1133,17 @@ app.get('/api/history/:id', authenticateToken, (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-
-// Health check
+// API routes above
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Server is running' });
+});
+
+// Serve React app for all other routes
+app.use(express.static(path.join(__dirname, '../client/build')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
 });
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`✅ Server running on port ${PORT} and accessible on Azure`);
 });
-
