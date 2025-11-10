@@ -1,0 +1,16 @@
+{
+  "name": "micro-loan-app",
+  "version": "1.0.0",
+  "description": "A basic Gen AI micro loan approval project with a focus on frontend, built with MERN stack. The system allows users to upload bank transaction statements (CSV/Excel) and get instant loan eligibility results based on simple rule-based analysis.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "package.json": "^2.0.1"
+  }
+}
